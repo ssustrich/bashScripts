@@ -1,4 +1,10 @@
 #!/bin/bash
+
+# This script will compare the sha1sum of all the jars in this directory and subdirectories 
+# aginst the .sha1 file that is in the same directory as the jar for equality
+# basicaly "sha1sum foo.jar == foo.jar.sha1"
+# it outputs the reulst to a file called "results in the current directory"
+
 declare -i COUNTER=0
 
 jarsToTest="$(find . -name '*.jar')"
