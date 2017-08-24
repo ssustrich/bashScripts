@@ -7,9 +7,16 @@
 
 declare -i COUNTER=0
 
-jarsToTest="$(find . -name '*.jar')"
+if [ -z "$1" ]
+  then
+    echo "No directory supplied, using current directory"
+	jarsToTest="$(find . -name '*.jar')"
+else
+	jarsToTest="$(find $1 -name '*.jar')"
+fi
+
+
 for file in $jarsToTest; do
-	#echo item: $file
 	COUNTER=$((COUNTER + 1))
 done
 
@@ -18,12 +25,9 @@ echo $COUNTER files found to test
 for file in $jarsToTest; do
 	COUNTER=$((COUNTER -1))
 	echo -en "Files remaining: $COUNTER\033[0K\r" 
-	#echo $file.sha1 >> shaDigest
-	#sha1sum $file | awk '{print $1;}' >> shaDigest
 	if [ -e "$file.sha1" ]; then
 		A="$(sha1sum $file | awk '{print $1;}')"
 		B="$(cat $file.sha1 | awk '{print $1;}')"
-		#echo $A $B
 		if [ "$A" != "$B" ]; then
 			echo $file does not validate against included sha1 file >> results
 			echo "  calculated hash: $A" >> results
