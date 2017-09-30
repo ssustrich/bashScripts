@@ -1,8 +1,9 @@
 #!/bin/bash
 imageFileExts="png jpe\?g bme\?p gif"
-documentFileExts="docx\? html\? txt pdf xps pptx\?"
-downloadsFileExts="zip exe msi 7z"
-developmentFileExts="java class py ipynb ear json xml patch"
+videoFileExts="mp4"
+documentFileExts="docx\? html\? txt pdf xps pptx\? properties"
+downloadsFileExts="zip exe msi 7z gz"
+developmentFileExts="java class py ipynb ear json xml patch jar tar"
 for file in *
   do
     for ext in $imageFileExts
@@ -12,6 +13,13 @@ for file in *
             mv -i "$file" ../Pictures/
         fi
       done
+	for ext in $videoFileExts
+      do
+        if echo $file | grep -qi "\.${ext}$"
+          then
+            mv -i "$file" ../Videos/
+        fi
+    done
     for ext in $documentFileExts
       do
          if echo $file | grep -qi "\.${ext}$"
