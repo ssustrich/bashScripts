@@ -4,7 +4,7 @@ videoFileExts="mp4"
 musicFileExts="mp3"
 documentFileExts="docx\? html\? txt pdf xps pptx\? properties xlsx\?"
 downloadsFileExts="zip exe msi 7z gz"
-developmentFileExts="java class py ipynb ear json xml patch jar tar"
+developmentFileExts="java class pyc\? ipynb ear json xml patch jar tar"
 for file in *
   do
     for ext in $imageFileExts
