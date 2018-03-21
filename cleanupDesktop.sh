@@ -1,7 +1,8 @@
 #!/bin/bash
 imageFileExts="png jpe\?g bme\?p gif"
 videoFileExts="mp4"
-documentFileExts="docx\? html\? txt pdf xps pptx\? properties"
+musicFileExts="mp3"
+documentFileExts="docx\? html\? txt pdf xps pptx\? properties xlsx\?"
 downloadsFileExts="zip exe msi 7z gz"
 developmentFileExts="java class py ipynb ear json xml patch jar tar"
 for file in *
@@ -13,13 +14,21 @@ for file in *
             mv -i "$file" ../Pictures/
         fi
       done
-	for ext in $videoFileExts
+    for ext in $videoFileExts
       do
         if echo $file | grep -qi "\.${ext}$"
           then
             mv -i "$file" ../Videos/
         fi
     done
+    for ext in $musicFileExts
+      do
+        if echo $file | grep -qi "\.${ext}$"
+          then
+            mv -i "$file" ../Music/
+        fi
+    done
+    
     for ext in $documentFileExts
       do
          if echo $file | grep -qi "\.${ext}$"
