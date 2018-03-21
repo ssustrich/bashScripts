@@ -4,6 +4,8 @@
 # aginst the .sha1 file that is in the same directory as the jar for equality
 # basicaly "sha1sum foo.jar == foo.jar.sha1"
 # it outputs the reulst to a file called "results in the current directory"
+# Not sure its needed. At one point I was concerned that my local maven repo
+# had corrupted files
 
 declare -i COUNTER=0
 
